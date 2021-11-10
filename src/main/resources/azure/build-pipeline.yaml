@@ -18,3 +18,8 @@ steps:
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
   displayName: 'Maven'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/target'
+    ArtifactName: 'PublishedProject'
+    publishLocation: 'Container'
