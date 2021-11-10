@@ -1,0 +1,20 @@
+trigger:
+- feature/Implementing-azure-pipeline
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean test package'
+    #options: '-X'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    testRunTitle: 'SpringLabTest'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+  displayName: 'Maven'
