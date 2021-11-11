@@ -20,6 +20,6 @@ steps:
   displayName: 'Maven'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.DefaultWorkingDirectory)/target'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/target'
     ArtifactName: 'PublishedProject'
     publishLocation: 'Container'
