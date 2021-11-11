@@ -5,7 +5,7 @@
 #declaring variables
 appSerName="mtr-$AZ_ENV-app-srv"
 webAppName="mtr-$AZ_ENV-web-app"
-jarName="lab1-0.0.1-SNAPSHOT"
+jarName="jwt-lab-0.0.1-SNAPSHOT"
 
 isReserved(){
 
