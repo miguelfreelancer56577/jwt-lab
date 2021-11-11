@@ -36,6 +36,11 @@ main(){
 				-g $AZ_RESOURCE_GROUP \
 				-n $webAppName \
 				--settings "@app-variables.json"
+			
+			echo "Setting startup command."	
+			az webapp config set \
+				--resource-group $AZ_RESOURCE_GROUP \
+				--name $webAppName \
 				--startup-file "java -jar /home/site/wwwroot/${jarName}.jar --server.port=80"
 			
 			echo "Deploying application to app service."
