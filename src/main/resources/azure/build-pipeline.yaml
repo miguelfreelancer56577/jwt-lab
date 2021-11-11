@@ -18,6 +18,13 @@ steps:
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
   displayName: 'Maven'
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo "pwd:"
+      pwd
+      echo "list"
+      ls -lrt
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/target'
