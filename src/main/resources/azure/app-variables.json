@@ -1,0 +1,12 @@
+[
+{
+"name": "AZURE_STORAGE_CONNECTION_STRING",
+"slotSetting": false,
+"value": " $(AZURE_STORAGE_CONNECTION_STRING)"
+},
+{
+"name": "SPRING_PROFILES_ACTIVE",
+"slotSetting": false,
+"value": " $(SPRING_PROFILES_ACTIVE)"
+}
+]
