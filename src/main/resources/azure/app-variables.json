@@ -2,11 +2,26 @@
 {
 "name": "AZURE_STORAGE_CONNECTION_STRING",
 "slotSetting": false,
-"value": " $(AZURE_STORAGE_CONNECTION_STRING)"
+"value": "$(AZURE_STORAGE_CONNECTION_STRING)"
 },
 {
 "name": "SPRING_PROFILES_ACTIVE",
 "slotSetting": false,
-"value": " $(SPRING_PROFILES_ACTIVE)"
+"value": "$(SPRING_PROFILES_ACTIVE)"
+},
+{
+"name": "APP_CONFIG_IMAGE_SECURITY_ID",
+"slotSetting": false,
+"value": "$(APP_CONFIG_IMAGE_SECURITY_ID)"
+},
+{
+"name": "APP_CONFIG_IMAGE_SECURITY_SECRET_KEY",
+"slotSetting": false,
+"value": "$(APP_CONFIG_IMAGE_SECURITY_SECRET_KEY)"
+},
+{
+"name": "WEBSITE_RUN_FROM_PACKAGE",
+"slotSetting": false,
+"value": "1"
 }
 ]
