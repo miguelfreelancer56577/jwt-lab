@@ -5,6 +5,7 @@
 #declaring variables
 appSerName="mtr-$AZ_ENV-app-srv"
 webAppName="mtr-$AZ_ENV-web-app"
+jarName="lab1-0.0.1-SNAPSHOT"
 
 isReserved(){
 
@@ -35,6 +36,7 @@ main(){
 				-g $AZ_RESOURCE_GROUP \
 				-n $webAppName \
 				--settings "@app-variables.json"
+				--startup-file "java -jar /home/site/wwwroot/${jarName}.jar --server.port=80"
 			
 			echo "Deploying application to app service."
 			az webapp deployment source config-zip \
