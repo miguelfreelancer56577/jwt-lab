@@ -86,5 +86,36 @@
 			<version>0.9.1</version>
 		</dependency>
 	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+			    <artifactId>maven-resources-plugin</artifactId>
+			    <executions>
+			         <execution>
+			            <id>copy-resources</id>
+			            <!-- here the phase you need -->
+			            <phase>package</phase>
+			            <goals>
+			               <goal>copy-resources</goal>
+			            </goals>
+			            <configuration>
+			               <outputDirectory>${basedir}/target</outputDirectory>
+			               <resources>          
+			                    <resource>
+			                        <directory>${basedir}/src/main/resources/azure</directory>
+			                        <filtering>true</filtering>
+			                    </resource>
+			               </resources>              
+			            </configuration>            
+			        </execution>
+			     </executions>
+			</plugin>
+		</plugins>
+	</build>
   
 </project>
