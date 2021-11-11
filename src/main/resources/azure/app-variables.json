@@ -10,14 +10,14 @@
 "value": "$(SPRING_PROFILES_ACTIVE)"
 },
 {
-"name": "APP_CONFIG_IMAGE_SECURITY_ID",
+"name": "APP_CONFIG_SECURITY_ID",
 "slotSetting": false,
-"value": "$(APP_CONFIG_IMAGE_SECURITY_ID)"
+"value": "$(APP_CONFIG_SECURITY_ID)"
 },
 {
-"name": "APP_CONFIG_IMAGE_SECURITY_SECRET_KEY",
+"name": "APP_CONFIG_SECURITY_SECRET_KEY",
 "slotSetting": false,
-"value": "$(APP_CONFIG_IMAGE_SECURITY_SECRET_KEY)"
+"value": "$(APP_CONFIG_SECURITY_SECRET_KEY)"
 },
 {
 "name": "WEBSITE_RUN_FROM_PACKAGE",
