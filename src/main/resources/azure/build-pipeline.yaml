@@ -2,7 +2,9 @@ trigger:
 - feature/Implementing-azure-pipeline
 pool:
   vmImage: 'ubuntu-latest'
-
+container:
+  image: mtrdevacr.azurecr.io/container-job:latest
+  endpoint: private_dockerhub_connection
 steps:
 
 - task: Maven@3
