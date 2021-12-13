@@ -17,7 +17,6 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
-  displayName: 'Maven'
 - task: PublishBuildArtifacts@1
   displayName: 'PublishBuildArtifacts'
   inputs:
