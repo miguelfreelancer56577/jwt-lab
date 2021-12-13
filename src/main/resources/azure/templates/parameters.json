@@ -5,6 +5,9 @@
         "app_srv_name": {
             "value": "mtr-$(AZ_ENV)-app-srv"
         },
+        "web_app_name": {
+            "value": "mtr-$(AZ_ENV)-web-app"
+        },
         "app_srv_location": {
             "value": "$(AZ_REGION)"
         },
@@ -25,6 +28,13 @@
         },
         "app_srv_sku_capacity": {
             "value": 1
+        },
+        "linuxFxVersion": {
+            "value": "JAVA|8-jre8"
+        },
+        "alwaysOn": {
+            "value": true
         }
+    }
     }
 }
