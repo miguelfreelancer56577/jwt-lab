@@ -46,27 +46,16 @@ steps:
     scriptPath: 'target/create-resource-group.sh'
     workingDirectory: '$(System.DefaultWorkingDirectory)/'
     failOnStandardError: true
-- task: Bash@3
-  displayName: 'ParametersFileBofore'
-  inputs:
-    targetType: 'inline'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/target/templates'
-    script: |
-      echo 'Printing before replacement'
-      cat parameters.json
 - task: replace-variables-in-file@1
-  displayName: 'ParametersReplacement'
+  displayName: 'AppSrvParametersReplacement'
   inputs:
-    filepath: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
+    filepath: '$(System.DefaultWorkingDirectory)/target/templates/app-srv-parameters.json'
     contentToVariable: false
-- task: Bash@3
-  displayName: 'ParametersFileAfter'
+- task: replace-variables-in-file@1
+  displayName: 'WebAppParametersReplacement'
   inputs:
-    targetType: 'inline'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/target/templates'
-    script: |
-      echo 'Printing after replacement'
-      cat parameters.json
+    filepath: '$(System.DefaultWorkingDirectory)/target/templates/web-app-parameters.json'
+    contentToVariable: false
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: 'AppServiceCreation'
   inputs:
