@@ -5,6 +5,7 @@ pool:
 steps:
 
 - task: Maven@3
+  displayName: 'MavenFase'
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'clean test package'
@@ -18,6 +19,7 @@ steps:
     jdkArchitectureOption: 'x64'
   displayName: 'Maven'
 - task: PublishBuildArtifacts@1
+  displayName: 'PublishBuildArtifacts'
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/target'
     ArtifactName: 'PublishedProject'
@@ -49,23 +51,23 @@ steps:
   displayName: 'ParametersFileBofore'
   inputs:
     targetType: 'inline'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/target/templates'
     script: |
       echo 'Printing before replacement'
-      cat target/parameters.json
+      cat parameters.json
 - task: replace-variables-in-file@1
   displayName: 'ParametersReplacement'
   inputs:
-    filepath: '$(System.DefaultWorkingDirectory)/target/parameters.json'
+    filepath: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
     contentToVariable: false
 - task: Bash@3
   displayName: 'ParametersFileAfter'
   inputs:
     targetType: 'inline'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/target/templates'
     script: |
       echo 'Printing after replacement'
-      cat target/parameters.json
+      cat parameters.json
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: 'AppServiceCreation'
   inputs:
@@ -76,6 +78,6 @@ steps:
     resourceGroupName: 'mtr-$(AZ_ENV)-grp'
     location: '$(AZ_REGION)'
     templateLocation: 'Linked artifact'
-    csmFile: '$(System.DefaultWorkingDirectory)/target/app-srv-template.json'
-    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/parameters.json'
+    csmFile: '$(System.DefaultWorkingDirectory)/target/templates/app-srv-template.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
     deploymentMode: 'Incremental'
