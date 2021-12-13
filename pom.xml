@@ -111,7 +111,7 @@
 			               <outputDirectory>${basedir}/target</outputDirectory>
 			               <resources>          
 			                    <resource>
-			                        <directory>${basedir}/src/main/resources/azure</directory>
+			                        <directory>${basedir}/src/main/resources/azure/**</directory>
 			                        <filtering>true</filtering>
 			                    </resource>
 			               </resources>              
