@@ -78,7 +78,7 @@ steps:
     location: '$(AZ_REGION)'
     templateLocation: 'Linked artifact'
     csmFile: '$(System.DefaultWorkingDirectory)/target/templates/app-srv-template.json'
-    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/app-srv-parameters.json'
     deploymentMode: 'Incremental'
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: 'WebAppCreation'
@@ -91,5 +91,5 @@ steps:
     location: '$(AZ_REGION)'
     templateLocation: 'Linked artifact'
     csmFile: '$(System.DefaultWorkingDirectory)/target/templates/web-app-template.json'
-    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/web-app-parameters.json'
     deploymentMode: 'Incremental'
