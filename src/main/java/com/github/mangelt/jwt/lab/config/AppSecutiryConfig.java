@@ -39,6 +39,8 @@ public class AppSecutiryConfig  extends WebSecurityConfigurerAdapter{
 		http
 			.csrf().disable()
 			.authorizeRequests()
+			.antMatchers(ApiConstants.MAPPING_ACTUATOR + ApiConstants.CARD_MATCH_ALL_FRAGMENTS)
+			.permitAll()
 			.mvcMatchers(ApiConstants.API_VERSION + ApiConstants.MAPPING_AUTHENTICATION + ApiConstants.MAPPING_SIGNIN)
 			.permitAll()
 			.anyRequest()

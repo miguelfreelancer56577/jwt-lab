@@ -7,6 +7,7 @@ public class ApiConstants {
 	public static final String MAPPING_SIGNIN = "/signin";
 	public static final String MAPPING_SIGNUP = "/signup";
 	public static final String MAPPING_REFRESHTOKEN = "/refreshtoken";
+	public static final String MAPPING_ACTUATOR = "/actuator";
 	
 //	message for validation
 	public static final String USER_SERVICE_USERID_MANDATORY = "User Id is mandatory.";
