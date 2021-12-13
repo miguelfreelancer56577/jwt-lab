@@ -43,6 +43,22 @@ steps:
     scriptPath: 'target/create-resource-group.sh'
     workingDirectory: '$(System.DefaultWorkingDirectory)/'
     failOnStandardError: true
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo 'Printing before replacement'
+      cat /target/parameters.json
+- task: replace-variables-in-file@1
+  inputs:
+    filepath: '$(System.DefaultWorkingDirectory)/target/parameters.json'
+    contentToVariable: false
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo 'Printing after replacement'
+      cat /target/parameters.json
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
