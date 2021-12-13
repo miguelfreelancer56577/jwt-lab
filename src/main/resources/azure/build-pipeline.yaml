@@ -49,23 +49,23 @@ steps:
   displayName: 'ParametersFileBofore'
   inputs:
     targetType: 'inline'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/target/templates'
     script: |
       echo 'Printing before replacement'
-      cat target/parameters.json
+      cat parameters.json
 - task: replace-variables-in-file@1
   displayName: 'ParametersReplacement'
   inputs:
-    filepath: '$(System.DefaultWorkingDirectory)/target/parameters.json'
+    filepath: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
     contentToVariable: false
 - task: Bash@3
   displayName: 'ParametersFileAfter'
   inputs:
     targetType: 'inline'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/target/templates'
     script: |
       echo 'Printing after replacement'
-      cat target/parameters.json
+      cat parameters.json
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: 'AppServiceCreation'
   inputs:
