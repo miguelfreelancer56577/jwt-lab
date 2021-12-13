@@ -34,7 +34,7 @@ steps:
       ls -lrt
 - task: AzureCLI@2
   inputs:
-    azureSubscription: 'Suscripción de Azure 1 (d19f674d-e7be-4536-a190-7b50b24cd379)'
+    azureSubscription: 'mtr_arm_conn'
     scriptType: 'bash'
     scriptLocation: 'scriptPath'
     scriptPath: 'target/create-resource-group.sh'
