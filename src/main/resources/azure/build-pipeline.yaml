@@ -32,6 +32,9 @@ steps:
       pwd
       echo 'List objects:'
       ls -lrt
+      cd target
+      echo 'List of objects inside target:'
+      ls -lrt
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'mtr_arm_conn'
@@ -40,3 +43,15 @@ steps:
     scriptPath: 'target/create-resource-group.sh'
     workingDirectory: '$(System.DefaultWorkingDirectory)/'
     failOnStandardError: true
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'mtr_arm_conn'
+    subscriptionId: 'd19f674d-e7be-4536-a190-7b50b24cd379'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'mtr-$(AZ_ENV)-grp'
+    location: '$(AZ_REGION)'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(System.DefaultWorkingDirectory)/target/app-srv-template.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/parameters.json'
+    deploymentMode: 'Incremental'
