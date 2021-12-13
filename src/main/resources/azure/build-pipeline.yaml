@@ -76,6 +76,6 @@ steps:
     resourceGroupName: 'mtr-$(AZ_ENV)-grp'
     location: '$(AZ_REGION)'
     templateLocation: 'Linked artifact'
-    csmFile: '$(System.DefaultWorkingDirectory)/target/app-srv-template.json'
-    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/parameters.json'
+    csmFile: '$(System.DefaultWorkingDirectory)/target/templates/app-srv-template.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
     deploymentMode: 'Incremental'
