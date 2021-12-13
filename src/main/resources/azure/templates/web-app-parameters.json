@@ -5,29 +5,14 @@
         "app_srv_name": {
             "value": "mtr-$(AZ_ENV)-app-srv"
         },
-        "web_app_name": {
-            "value": "mtr-$(AZ_ENV)-web-app"
-        },
         "app_srv_location": {
             "value": "$(AZ_REGION)"
         },
+        "web_app_name": {
+            "value": "mtr-$(AZ_ENV)-web-app"
+        },
         "app_srv_env": {
             "value": "$(AZ_ENV)"
-        },
-        "app_srv_sku_name": {
-            "value": "B1"
-        },
-        "app_srv_sku_tier": {
-            "value": "Basic"
-        },
-        "app_srv_sku_size": {
-            "value": "B1"
-        },
-        "app_srv_sku_family": {
-            "value": "B"
-        },
-        "app_srv_sku_capacity": {
-            "value": 1
         },
         "linuxFxVersion": {
             "value": "JAVA|8-jre8"
