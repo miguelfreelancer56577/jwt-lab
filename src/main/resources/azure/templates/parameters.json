@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "app_srv_name": {
+            "value": "mtr-$(AZ_ENV)-app-srv"
+        },
+        "app_srv_location": {
+            "value": "$(AZ_REGION)"
+        },
+        "app_srv_env": {
+            "value": "$(AZ_ENV)"
+        },
+        "app_srv_sku_name": {
+            "value": "B1"
+        },
+        "app_srv_sku_tier": {
+            "value": "Basic"
+        },
+        "app_srv_sku_size": {
+            "value": "B1"
+        },
+        "app_srv_sku_family": {
+            "value": "B"
+        },
+        "app_srv_sku_capacity": {
+            "value": 1
+        }
+    }
+}

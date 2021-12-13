@@ -1,0 +1,63 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "app_srv_name": {
+            "type": "String"
+        },
+		"app_srv_location": {
+            "type": "String"
+        },
+		"app_srv_env": {
+            "type": "String"
+        },
+		"app_srv_sku_name": {
+            "type": "String"
+        },
+		"app_srv_sku_tier": {
+            "type": "String"
+        },
+		"app_srv_sku_size": {
+            "type": "String"
+        },
+		"app_srv_sku_family": {
+            "type": "String"
+        },
+		"app_srv_sku_capacity": {
+            "type": "int"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2021-02-01",
+            "name": "[parameters('app_srv_name')]",
+            "location": "[parameters('app_srv_location')]",
+            "tags": {
+                "enviroment": "[parameters('app_srv_env')]"
+            },
+            "sku": {
+                "name": "[parameters('app_srv_sku_name')]",
+                "tier": "[parameters('app_srv_sku_tier')]",
+                "size": "[parameters('app_srv_sku_size')]",
+                "family": "[parameters('app_srv_sku_family')]",
+                "capacity": "[parameters('app_srv_sku_capacity')]"
+            },
+            "kind": "linux",
+            "properties": {
+                "perSiteScaling": false,
+                "elasticScaleEnabled": false,
+                "maximumElasticWorkerCount": 1,
+                "isSpot": false,
+                "freeOfferExpirationTime": "2022-01-12T19:19:17.2966667",
+                "reserved": true,
+                "isXenon": false,
+                "hyperV": false,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0,
+                "zoneRedundant": false
+            }
+        }
+    ]
+}
