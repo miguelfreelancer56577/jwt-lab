@@ -2,7 +2,6 @@ trigger:
 - feature/Implementing-azure-pipeline
 pool:
   vmImage: 'ubuntu-latest'
-
 steps:
 
 - task: Maven@3
