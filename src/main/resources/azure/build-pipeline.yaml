@@ -77,7 +77,7 @@ steps:
     resourceGroupName: 'mtr-$(AZ_ENV)-grp'
     location: '$(AZ_REGION)'
     templateLocation: 'Linked artifact'
-    csmFile: '$(System.DefaultWorkingDirectory)/target/templates/web-app-template.json'
+    csmFile: '$(System.DefaultWorkingDirectory)/target/templates/app-srv-template.json'
     csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
     deploymentMode: 'Incremental'
 - task: AzureResourceManagerTemplateDeployment@3
@@ -90,6 +90,6 @@ steps:
     resourceGroupName: 'mtr-$(AZ_ENV)-grp'
     location: '$(AZ_REGION)'
     templateLocation: 'Linked artifact'
-    csmFile: '$(System.DefaultWorkingDirectory)/target/templates/app-srv-template.json'
+    csmFile: '$(System.DefaultWorkingDirectory)/target/templates/web-app-template.json'
     csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
     deploymentMode: 'Incremental'
