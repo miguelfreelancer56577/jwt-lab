@@ -24,6 +24,7 @@ steps:
     publishLocation: 'Container'
 #Tasks to create the needed infrastructure
 - task: Bash@3
+  displayName: 'DirectoryStructure'
   inputs:
     targetType: 'inline'
     script: |
@@ -36,6 +37,7 @@ steps:
       echo 'List of objects inside target:'
       ls -lrt
 - task: AzureCLI@2
+  displayName: 'ResourceGroupCreation'
   inputs:
     azureSubscription: 'mtr_arm_conn'
     scriptType: 'bash'
@@ -44,22 +46,28 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/'
     failOnStandardError: true
 - task: Bash@3
+  displayName: 'ParametersFileBofore'
   inputs:
     targetType: 'inline'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/'
     script: |
       echo 'Printing before replacement'
       cat /target/parameters.json
 - task: replace-variables-in-file@1
+  displayName: 'ParametersReplacement'
   inputs:
     filepath: '$(System.DefaultWorkingDirectory)/target/parameters.json'
     contentToVariable: false
 - task: Bash@3
+  displayName: 'ParametersFileAfter'
   inputs:
     targetType: 'inline'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/'
     script: |
       echo 'Printing after replacement'
       cat /target/parameters.json
 - task: AzureResourceManagerTemplateDeployment@3
+  displayName: 'AppServiceCreation'
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: 'mtr_arm_conn'
