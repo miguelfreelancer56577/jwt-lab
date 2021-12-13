@@ -5,6 +5,7 @@ pool:
 steps:
 
 - task: Maven@3
+  displayName: 'MavenFase'
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'clean test package'
@@ -18,6 +19,7 @@ steps:
     jdkArchitectureOption: 'x64'
   displayName: 'Maven'
 - task: PublishBuildArtifacts@1
+  displayName: 'PublishBuildArtifacts'
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/target'
     ArtifactName: 'PublishedProject'
