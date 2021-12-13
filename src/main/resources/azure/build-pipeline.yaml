@@ -52,7 +52,7 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/'
     script: |
       echo 'Printing before replacement'
-      cat /target/parameters.json
+      cat target/parameters.json
 - task: replace-variables-in-file@1
   displayName: 'ParametersReplacement'
   inputs:
@@ -65,7 +65,7 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/'
     script: |
       echo 'Printing after replacement'
-      cat /target/parameters.json
+      cat target/parameters.json
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: 'AppServiceCreation'
   inputs:
