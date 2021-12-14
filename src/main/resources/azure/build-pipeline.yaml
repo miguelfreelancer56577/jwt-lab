@@ -47,14 +47,9 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/'
     failOnStandardError: true
 - task: replace-variables-in-file@1
-  displayName: 'AppSrvParametersReplacement'
+  displayName: 'ParametersReplacement'
   inputs:
-    filepath: '$(System.DefaultWorkingDirectory)/target/templates/app-srv-parameters.json'
-    contentToVariable: false
-- task: replace-variables-in-file@1
-  displayName: 'WebAppParametersReplacement'
-  inputs:
-    filepath: '$(System.DefaultWorkingDirectory)/target/templates/web-app-parameters.json'
+    filepath: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
     contentToVariable: false
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: 'AppServiceCreation'
@@ -66,19 +61,6 @@ steps:
     resourceGroupName: 'mtr-$(AZ_ENV)-grp'
     location: '$(AZ_REGION)'
     templateLocation: 'Linked artifact'
-    csmFile: '$(System.DefaultWorkingDirectory)/target/templates/app-srv-template.json'
-    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/app-srv-parameters.json'
-    deploymentMode: 'Incremental'
-- task: AzureResourceManagerTemplateDeployment@3
-  displayName: 'WebAppCreation'
-  inputs:
-    deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'mtr_arm_conn'
-    subscriptionId: 'd19f674d-e7be-4536-a190-7b50b24cd379'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: 'mtr-$(AZ_ENV)-grp'
-    location: '$(AZ_REGION)'
-    templateLocation: 'Linked artifact'
-    csmFile: '$(System.DefaultWorkingDirectory)/target/templates/web-app-template.json'
-    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/web-app-parameters.json'
+    csmFile: '$(System.DefaultWorkingDirectory)/target/templates/template.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/target/templates/parameters.json'
     deploymentMode: 'Incremental'
