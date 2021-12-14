@@ -31,6 +31,9 @@
         },
         "linuxFxVersion": {
             "type": "string"
+        },
+        "web_app_name": {
+            "type": "string"
         }
     },
     "variables": {
